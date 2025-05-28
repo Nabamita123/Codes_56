@@ -1,11 +1,9 @@
-import { Router } from "express";
-import { loginUser, logoutUser, registerUser , refreshAccessToken, changeCurrentPassword, getCurrentUser, updateAccountDetails, updateUserAvatar, updateUserCoverImage,getUserChannelProfile, getWatchHistory} from "../controllers/user.controller.js";
 import {upload} from "../middlewares/multer.middleware.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
-import { uploadVideo } from "../controllers/video.controller.js";
-import router from "./user.routes.js";
-import multer from "multer";
+import { uploadVideo , getVideoById, getAllVideos, getUserVideos, updateVideo, deleteVideo,togglePublishVideo} from "../controllers/video.controller.js";
+import { Router } from "express";
 
+const router = Router();
 router.route("/upload-video").post(verifyJWT,
     upload.fields([
         {
@@ -17,5 +15,12 @@ router.route("/upload-video").post(verifyJWT,
     ]),
     uploadVideo
 );
+router.route("/:id").get(getVideoById);
+router.route("/").get(getAllVideos);
+router.route("/user/:userId").get(getUserVideos);
+router.route("/update/:videoId").put(verifyJWT, updateVideo)
+router.route("/delete/:videoId").delete(verifyJWT, deleteVideo)
+router.route("/toggle-publish/:videoId").patch( verifyJWT, togglePublishVideo);
+
 
 export default router;

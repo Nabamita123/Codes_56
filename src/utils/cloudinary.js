@@ -43,10 +43,31 @@ const deleteFromCloudinary = async (publicId) => {
       invalidate: true
     });
      if (result.result === "ok") {
-      console.log("Cloudinary: Old avatar deleted successfully");
+      console.log("Cloudinary: Old file deleted successfully");
       return { success: true, result };
     } else {
-      console.warn("Cloudinary: Failed to delete avatar");
+      console.warn("Cloudinary: Failed to delete file");
+      return { success: false, result };
+    }
+  } catch (error) {
+    console.error("Cloudinary deletion error:", error.message);
+    return { success: false, error: error.message };
+  }
+};
+
+const deleteFromCloudinaryVideo = async (publicId) => {
+  try {
+    if (!publicId) return null;
+
+    const result = await cloudinary.uploader.destroy(publicId, {
+      resource_type: "video",
+      invalidate: true
+    });
+     if (result.result === "ok") {
+      console.log("Cloudinary: Old file deleted successfully");
+      return { success: true, result };
+    } else {
+      console.warn("Cloudinary: Failed to delete file");
       return { success: false, result };
     }
   } catch (error) {
@@ -58,5 +79,6 @@ const deleteFromCloudinary = async (publicId) => {
 
 export {uploadOnCloudinary,
     extractPublicId,
-    deleteFromCloudinary
+    deleteFromCloudinary,
+    deleteFromCloudinaryVideo
 }
