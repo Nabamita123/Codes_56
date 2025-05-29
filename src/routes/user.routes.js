@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { loginUser, logoutUser, registerUser , refreshAccessToken, changeCurrentPassword, getCurrentUser, updateAccountDetails, updateUserAvatar, updateUserCoverImage,getUserChannelProfile, getWatchHistory} from "../controllers/user.controller.js";
 import {upload} from "../middlewares/multer.middleware.js";
+import {apiRateLimiter} from "../middlewares/rateLimiter.middleware.js"
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 
