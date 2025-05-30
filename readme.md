@@ -20,58 +20,58 @@ Streamify is a fully-featured backend REST API for a YouTube-style video streami
 ---
 
 ## 📂 Project Structure
-Streamify/
-├── public/
-│ └── temp/ # Temporary local file storage before Cloudinary upload
-├── src/
-│ ├── controllers/
-│ │ ├── admin.controller.js
-│ │ ├── comment.controller.js
-│ │ ├── like.controller.js
-│ │ ├── playlist.controller.js
-│ │ ├── subscription.controller.js
-│ │ ├── user.controller.js
-│ │ ├── video.controller.js
-│ │ └── watchHistory.controller.js
-│ ├── db/
-│ │ └── index.js # MongoDB connection setup
-│ ├── middlewares/
-│ │ ├── authentication.middleware.js
-│ │ ├── multer.middleware.js
-│ │ └── ratelimiter.middleware.js
-│ ├── models/
-│ │ ├── comment.model.js
-│ │ ├── like.model.js
-│ │ ├── playlist.model.js
-│ │ ├── subscription.model.js
-│ │ ├── user.model.js
-│ │ ├── video.model.js
-│ │ └── watchHistory.model.js
-│ ├── routes/
-│ │ ├── admin.route.js
-│ │ ├── comment.route.js
-│ │ ├── like.route.js
-│ │ ├── playlist.route.js
-│ │ ├── subscribe.route.js
-│ │ ├── user.route.js
-│ │ ├── video.route.js
-│ │ └── watchHistory.route.js
-│ ├── utils/
-│ │ ├── api-error.js
-│ │ ├── api-response.js
-│ │ ├── async-handler.js
-│ │ └── cloudinary.js
-│ ├── app.js # Express app setup
-│ ├── constants.js # Constant variables and enums
-│ └── index.js # Server entry point
-├── test/
-│ └── admin.test.mjs # Admin routes test file
-├── .env # Environment variables
-├── .gitignore
-├── js.config.mjs
-├── package.json
-├── package-lock.json
-└── README.md
+- Streamify/
+- ├── public/
+- │ └── temp/ # Temporary local file storage before Cloudinary upload
+- ├── src/
+- │ ├── controllers/
+- │ │ ├── admin.controller.js
+- │ │ ├── comment.controller.js
+- │ │ ├── like.controller.js
+- │ │ ├── playlist.controller.js
+- │ │ ├── subscription.controller.js
+- │ │ ├── user.controller.js
+- │ │ ├── video.controller.js
+- │ │ └── watchHistory.controller.js
+- │ ├── db/
+- │ │ └── index.js # MongoDB connection setup
+- │ ├── middlewares/
+- │ │ ├── authentication.middleware.js
+- │ │ ├── multer.middleware.js
+- │ │ └── ratelimiter.middleware.js
+- │ ├── models/
+- │ │ ├── comment.model.js
+- │ │ ├── like.model.js
+- │ │ ├── playlist.model.js
+- │ │ ├── subscription.model.js
+- │ │ ├── user.model.js
+- │ │ ├── video.model.js
+- │ │ └── watchHistory.model.js
+- │ ├── routes/
+- │ │ ├── admin.route.js
+- │ │ ├── comment.route.js
+- │ │ ├── like.route.js
+- │ │ ├── playlist.route.js
+- │ │ ├── subscribe.route.js
+- │ │ ├── user.route.js
+- │ │ ├── video.route.js
+- │ │ └── watchHistory.route.js
+- │ ├── utils/
+- │ │ ├── api-error.js
+- │ │ ├── api-response.js
+- │ │ ├── async-handler.js
+- │ │ └── cloudinary.js
+- │ ├── app.js # Express app setup
+- │ ├── constants.js # Constant variables and enums
+- │ └── index.js # Server entry point
+- ├── test/
+- │ └── admin.test.mjs # Admin routes test file
+- ├── .env # Environment variables
+- ├── .gitignore
+- ├── js.config.mjs
+- ├── package.json
+- ├── package-lock.json
+- └── README.md
 
 
 ---
@@ -102,16 +102,18 @@ Streamify/
 ### 2. Install dependencies
 - npm install
 ### 3. Configure environment variables
-- Create a .env file in the root directory with:
+- Create a **.env** file in the root directory with:
 
--PORT=3000
-- MONGO_URI=your_mongodb_connection_string
-- JWT_SECRET=your_jwt_access_token_secret
-- JWT_REFRESH_SECRET=your_jwt_refresh_token_secret
+- PORT=3000
+- MONGODB_URI=your_mongodb_connection_string
+- ACCESS_TOKEN_SECRET=your_jwt_access_token_secret
+- ACCESS_TOKEN_EXPIRY = 1d
+- REFRESH_TOKEN_SECRET=your_jwt_refresh_token_secret
+- REFRESH_TOKEN_EXPIRY=10d
 - CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-- CLOUDINARY_API_KEY=your_cloudinary_api_key
-- CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-- CORS_WHITELIST=your_whitelisted_ips_or_domains
+- CLOUDINARY_CLOUD_KEY=your_cloudinary_api_key
+- CLOUDINARY_CLOUD_SECRET=your_cloudinary_api_secret
+- CORS_ORIGIN=*
 
 ### 4. Run the app
 - npm run dev
